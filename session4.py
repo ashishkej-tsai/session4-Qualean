@@ -1,82 +1,74 @@
-from typing import List
+import decimal
+from decimal import Decimal
+import random
 import time
 import sys
-import gc
 
-# Here in this code we will be leaking memory because we are creating cyclic reference. 
-# Find that we are indeed making cyclic references.
-# Eventually memory will be released, but that is currently not happening immediately.
-# We have added a function called "clear_memory" but it is not able to do it's job. Fix it. 
-# Refer to test_clear_memory Test in test_session2.py to see how we're crudely finding that
-# this code is sub-optimal.
-class Something(object):
 
-    def __init__(self):
+class Qualean:
+
+    def __init__(self, real):
         super().__init__()
-        self.something_new = None
+        self.real = real
+        self.imag = self.real * Decimal(str(round(random.uniform(-1,1),10)))
+
+    @property
+    def real(self):
+        return self._real
+
+    @real.setter
+    def real(self, real):
+        if (real != 1) and (real != -1) and (real != 0):
+            raise ValueError("Real Number must be either -1, 0 , 1")
+        else:
+            self._real = int(real)
+
     def __repr__(self):
-        return 'S:{0}'.format(hex(id(self)))
+        return '{0}'.format(bool(self.real))
 
+    def __str__(self):
+        return '{0}'.format(self.imag)
 
-class SomethingNew(object):
+    def __bool__(self):
+        return bool(self.real)
 
-    def __init__(self, i: int = 0, something: Something = None):
-        super().__init__()
-        self.i = i
-        self.something = something
-    def __repr__(self):
-        return 'S:{0}'.format(hex(id(self.something)))
+    def __and__(self, value):
+        return self.imag and value.imag
 
+    def __or__(self, value):
+        return self.imag or value.imag
 
-def add_something(collection: List[Something], i: int):
-    something = Something()
-    something.something_new = SomethingNew(i, something)
-    collection.append(something)
+    def __add__(self, value):
+        return self.imag + value.imag
 
-def reserved_function():
-    # to be used in future if required
-    pass
+    def __eq__(self, value):
+        return self.imag == value.imag
 
-def clear_memory(collection: List[Something]):
-    # Python's Garbage Collector kicks in after some time, calling gc.collect immediately to remove Cyclic references created
-    collection.clear()
-    gc.collect()
+    def __float__(self):
+        return float(self.imag)
 
+    def __ge__(self, value):
+        return self.imag >= value.imag
 
-def critical_function():
-    collection = list()
-    for i in range(1, 1024 * 128):
-        add_something(collection, i)
-    clear_memory(collection)
+    def __gt__(self, value):
+        return self.imag > value.imag
 
+    def __invertsign__(self):
+        return -self.imag
 
-# Here we are suboptimally testing whether two strings are exactly same or not
-# After that we are trying to see if we have a particular character in that string or not
-# Currently the code is suboptimal. Write it in such a way that it takes 1/10 the current time
+    def __le__(self, value):
+        return self.imag <= value.imag
 
-# DO NOT CHANGE THIS PROGRAM
-def compare_strings_old(n):
-    a = 'a long string that is not intered' * 200
-    b = 'a long string that is not intered' * 200
-    for i in range(n):
-        if a == b:
-            pass
-    char_list = list(a)
-    for i in range(n):
-        if 'd' in char_list:
-            pass
+    def __lt__(self, value):
+        return self.imag < value.imag
 
-# YOU NEED TO CHANGE THIS PROGRAM
-def compare_strings_new(n):
-    a = sys.intern('a long string that is not intered' * 200)
-    b = sys.intern('a long string that is not intered' * 200)
-    for i in range(n):
-        if a is b:
-            pass
-    char_list = set(a)
-    for i in range(n):
-        if 'd' in char_list:
-            pass
+    def __mul__(self, value):
+        return self.imag * value.imag
+
+    def __sqrt__(self):
+        return self.imag.sqrt()
 
 
 
+
+#__and__,  __or__, __repr__, __str__, __add__, __eq__, __float__, __ge__, __gt__, __invertsign__, __le__, __lt__, __mul__, __sqrt__, __bool__
