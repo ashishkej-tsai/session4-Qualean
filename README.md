@@ -1,56 +1,66 @@
 
 # EPAi Session4 Assignment
-Assignment to check our knowledge of Conversion between bases, float equality, rounding, truncation  and README Markdown formatting. There are in total 19 tests which are described below.
+Assignment to check our knowledge of Numeric types, Decimal, Complex Numbers, Bankers rounding. Also how to write test cases ourselves.
 
-## test invalid base valueerror
-Check whether base lies between 2,36, raise ValueError 
+## test add 100 times
+Check whether q+q+ 100 times == 100 * q 
 
-## test invalid base valueerror provides relevant_message
-Check whether base lies between 2,36 ValueError message has proper description
+## test qualean eq decimal sqrt
+Check whether our implementation of sqrt equal Decimal sqrt function
 
 
-## test_innacurate_digit_map_length
-Check digit_map length equal to base in encoded_from_base10
+## test sum million different eq zero()
+Check adding million different Qualeans is close to zero or not. 
 
-## test_hexadecimal_conversions
-Check encoded_from_base10 for positive number
+## test and undefined()
+Check q1 and q2 returns False when q2 is not defined as well and q1 is False
 
-## test_negative_hexadecimal_conversions
-Check encoded_from_base10 for negative number
+## test or undefined()
+Check q1 or q2 returns True when q2 is not defined as well and q1 is not false
 
-## test_repeating_digits_in_digit_map
-Check whether digits are not repeating in digit_map by raising ValuError
+## test and functionality()
+Check implemented and functionality 
 
-## test_repeating_digits_valueerror_provides_relevant_message
-Check whether digits are not repeating in digit_map ValueError has correct description
+## test or functionality()
+Check implemented or functionality
 
-## test_float_equality_testing
-Implement isclose functionality for rel_tol=1e-12, abs_tol=1e-5
+## test le functionality()
+Check implemented less than or equal functionality
 
-## test_things_not_allowed
-Check whether we are importing math, using int class or isclose function, bin hex round
-'math',
-    'isclose',
-    'bin(',
-    'hex(',
-    'round',
-    'int(',
-    '10.4',
-    '-10.4'
-    '1.25',
-    '-1.25',
+## test lt functionality()
+Check implemented less than  functionality
 
-## test fraction used or not
-Check whether we are using Fraction from fractions module
+## test gt functionality()
+Check implemented greater than functionality
 
-## test_manual_truncation_function
-Implement manual math.trunc function without using int() class
+## test ge functionality()
+Check implemented greater than or equal functionality
 
-## test_manual_rounding_function
-Implement manual round function of Python without using int() class
+## test eq functionality()
+Check implemented equality functionality
 
-## test functions for zero
-Check whether float_equality_testing, manual_truncation_function, manual_rounding_function are working for 0.0 or not
+## test qualean value error real()
+Check whether Value error raised when real number is not -1, 0 , 1
+
+## test invertsign functionality
+Check implemented invert sign functionality
+
+## test add functionality()
+Check implemented addition functionality
+
+## test sqrt functionality()
+Check implemented square root functionality
+
+## test mul functionality()
+Check implemented multiplication functionality
+
+## test bool functionality()
+Check implemented bool functionality
+
+## test all funcs present()
+Check whether all funcs __and__,  __or__, __repr__, __str__, __add__, __eq__, __float__, __ge__, __gt__, __invertsign__, __le__, __lt__, __mul__, __sqrt__, __bool__
+are implemented or not.
+
 ## test readme exists
 Check whether this file exists or not
 
@@ -59,23 +69,6 @@ Check whether this README file is interesting or not by counting the number of w
 
 ## test readme proper description
 Check whether this file has proper function/class description or not, by looking for these words 
-'int',
-    'encoded_from_base10',
-    'digit_map',
-    'ValueError',
-    'math',
-    'isclose',
-    'absolute',
-    'relative',
-    'tolerance',
-    'bin',
-    'hex',
-    'round',
-    'truncation',
-    'error',
-    'equality',
-    'zero',
-    'away'
     'Qualean',
     'Decimal',
     'Test Cases'
